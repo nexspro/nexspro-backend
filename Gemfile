@@ -6,7 +6,7 @@ source "https://rubygems.org"
 gem "rails"
 gem "pg"
 gem "puma"
-
+gem "rodauth-rails"
 # =============================
 #  Performance & Initialisation
 # =============================
@@ -31,7 +31,7 @@ group :development do
   gem "rubocop-rails-omakase", require: false
   gem "brakeman", require: false
   gem "dotenv-rails"
-  gem "annotate"
+  gem "ruby-lsp-rails"
 end
 
 # =============================
@@ -58,3 +58,9 @@ end
 # gem "solid_cache"
 # gem "solid_queue"
 # gem "solid_cable"
+# Enables Sequel to use Active Record's database connection
+gem "sequel-activerecord_connection", "~> 2.0", require: false
+# Used by Rodauth for password hashing
+gem "bcrypt", "~> 3.1", require: false
+# Used by Rodauth for rendering built-in view and email templates
+gem "tilt", "~> 2.4", require: false
