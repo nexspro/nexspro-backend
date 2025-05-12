@@ -2,5 +2,9 @@
 # for example lib/tasks/capistrano.rake, and they will automatically be available to Rake.
 
 require_relative "config/application"
+require "annotate"
 
 Rails.application.load_tasks
+Rake::Task["db:migrate"].enhance do
+  Rake::Task["annotate"].invoke
+end

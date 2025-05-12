@@ -1,24 +1,41 @@
-# README
+# Nexspro Backend (Ruby on Rails API)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**Nexspro** est un projet personnel ambitieux conçu comme un **hub centralisé** regroupant toutes les facettes de ma vie numérique : portfolio de développeur, bibliothèque de ressources, projets, réseaux sociaux, e-commerce, gaming et plus encore.
 
-Things you may want to cover:
+Ce dépôt correspond à la **partie backend** de Nexspro, développée en **Ruby on Rails (API only)**.
+Le frontend est développé séparément avec **Next.js + Tailwind CSS**.
 
-* Ruby version
+## Objectif du projet
 
-* System dependencies
+> Centraliser en un seul endroit tous mes outils, contenus, projets et services digitaux sous forme de modules indépendants connectés via une API.
 
-* Configuration
+## Technologies principales
 
-* Database creation
+- **Ruby on Rails 7 (API mode)**
+- **PostgreSQL**
+- **RSpec** – tests
+- **dotenv-rails** – gestion des variables d’environnement
+- **rack-cors** – support de la communication avec le frontend Next.js
+- **puma** – serveur applicatif
 
-* Database initialization
+## Fonctionnalités prévues (API)
 
-* How to run the test suite
+- Authentification sécurisée (Rodauth + JWT)
+- Gestion des utilisateurs
+- Modules indépendants connectés :
+  - Portfolio
+  - Bibliothèque de ressources (livres, articles, vidéos)
+  - Projets (personnels / professionnels)
+  - Réseaux sociaux
+  - Système de liens personnalisés (type Linktree)
+  - Module e-commerce (à venir)
+  - Intégration gaming & live
+- API documentée avec versionning (`/api/v1/...`)
 
-* Services (job queues, cache servers, search engines, etc.)
+## Auteur
 
-* Deployment instructions
+Développé par Michael Minot
 
-* ...
+Formation : Le Wagon (Fullstack Ruby on Rails)
+
+Objectif : Créer une plateforme personnelle évolutive, modulaire, et open-source pour centraliser tous mes outils et contenus.
