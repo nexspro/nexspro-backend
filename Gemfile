@@ -30,7 +30,6 @@ end
 group :development do
   gem "rubocop-rails-omakase", require: false
   gem "brakeman", require: false
-  gem "dotenv-rails"
   gem "ruby-lsp-rails"
 end
 
@@ -48,6 +47,7 @@ end
 # =============================
 group :development, :test do
   gem "debug", platforms: %i[mri windows], require: "debug/prelude"
+  gem "dotenv-rails"
 end
 
 # =============================
@@ -62,5 +62,7 @@ end
 gem "sequel-activerecord_connection", "~> 2.0", require: false
 # Used by Rodauth for password hashing
 gem "bcrypt", "~> 3.1", require: false
+# Used by Rodauth for JWT support
+gem "jwt", "~> 2.9", require: false
 # Used by Rodauth for rendering built-in view and email templates
 gem "tilt", "~> 2.4", require: false

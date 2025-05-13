@@ -42,5 +42,6 @@ module NexsproBackend
     config.api_only = true
     config.time_zone = "UTC"
     config.i18n.default_locale = :en
+    config.middleware.use Rodauth::Rails::Middleware
   end
 end

@@ -4,7 +4,7 @@ class RodauthMain < Rodauth::Rails::Auth
   configure do
     # List of authentication features that are loaded.
     enable :create_account, :verify_account, :verify_account_grace_period,
-      :login, :logout, :remember, :json,
+      :login, :logout, :jwt,
       :reset_password, :change_password, :change_login, :verify_login_change,
       :close_account
 
@@ -22,17 +22,19 @@ class RodauthMain < Rodauth::Rails::Auth
     # verify_account_table :user_verification_keys
     # verify_login_change_table :user_login_change_keys
     # reset_password_table :user_password_reset_keys
-    # remember_table :user_remember_keys
 
     # The secret key used for hashing public-facing tokens for various features.
     # Defaults to Rails `secret_key_base`, but you can use your own secret key.
-    # hmac_secret "4a0f247b1f7891c8761c6f64a20385abfb0a64db8a1ff21189f12a3e34a115d2a310f7adc4c931489c893b545c8c17f5d94a1ad84fe68b2e8cc4925207c3d2a4"
+    # hmac_secret "d163fa6f7057a367c764424b1a27bf89fd737e236d0ffae78141828181f8c93bd80a284a7257060edb3dc739049f082b209d39f33b50e10f40c403956ab99a3b"
+
+    # Set JWT secret, which is used to cryptographically protect the token.
+    jwt_secret { hmac_secret }
 
     # Accept only JSON requests.
     only_json? true
 
     # Handle login and password confirmation fields on the client side.
-    # require_password_confirmation? false
+    require_password_confirmation? false
     # require_login_confirmation? false
 
     # Use path prefix for all routes.
@@ -56,8 +58,9 @@ class RodauthMain < Rodauth::Rails::Auth
     # Change some default param keys.
     login_param "email"
     login_confirm_param "email-confirm"
-    # password_confirm_param "confirm_password"
 
+    # password_confirm_param "confirm_password"
+    #
     # Redirect back to originally requested location after authentication.
     # login_return_to_requested_location? true
     # two_factor_auth_return_to_requested_location? true # if using MFA
@@ -107,16 +110,6 @@ class RodauthMain < Rodauth::Rails::Auth
     #   end
     # end
 
-    # ==> Remember Feature
-    # Remember all logged in users.
-    after_login { remember_login }
-
-    # Or only remember users that have ticked a "Remember Me" checkbox on login.
-    # after_login { remember_login if param_or_nil("remember") }
-
-    # Extend user's remember period when remembered via a cookie
-    extend_remember_deadline? true
-
     # ==> Hooks
     # Validate custom fields in the create account form.
     # before_create_account do
@@ -138,6 +131,5 @@ class RodauthMain < Rodauth::Rails::Auth
     # verify_account_grace_period 3.days.to_i
     # reset_password_deadline_interval Hash[hours: 6]
     # verify_login_change_deadline_interval Hash[days: 2]
-    # remember_deadline_interval Hash[days: 30]
   end
 end
