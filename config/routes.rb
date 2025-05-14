@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
-  get "/me", to: "me#show"
+  namespace :api do
+    namespace :v1 do
+      resources :projects
+      resources :skills
+      resources :clients
+      resources :release_notes
+      resources :news_posts
+    end
+  end
+
   get "up" => "rails/health#show", as: :rails_health_check
 end

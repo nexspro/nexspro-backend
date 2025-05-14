@@ -1,6 +1,10 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 require "dotenv"
+require 'simplecov'
+SimpleCov.start 'rails' do
+  add_filter '/spec/'
+end
 Dotenv.load(".env")
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
@@ -46,7 +50,22 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+  config.include FactoryBot::Syntax::Methods
+  Shoulda::Matchers.configure do |m|
+    m.integrate do |with|
+      with.test_framework :rspec
+      with.library :rails
+    end
+  end
 
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.around(:each) do |example|
+    DatabaseCleaner.cleaning { example.run }
+  end
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
 
@@ -71,5 +90,4 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  config.include FactoryBot::Syntax::Methods
 end
