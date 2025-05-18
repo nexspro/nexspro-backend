@@ -1,34 +1,32 @@
-# 🌐 Nexspro – Mon site personnel centralisé
+# Nexspro Backend – Rails API for Developer Platform
 
-Bienvenue sur le dépôt de **Nexspro**, mon projet personnel que je développe pour regrouper tout ce qui me représente en tant que développeur web. C’est un **hub personnel** avec plusieurs sections : portfolio, compétences, projets, publications, changelog, et plus encore.
+This is the backend API for my personal developer platform **Nexspro**.
 
----
+Built with **Ruby on Rails**, it powers all data, authentication, and content logic used by the frontend interface.
 
-## 🚀 Pourquoi ce projet ?
+##  Technologies
 
-Je voulais créer un espace unique, simple et rapide à faire évoluer, où je peux :
-- Présenter mes compétences et projets
-- Publier des mises à jour et articles liés à mon parcours tech
-- Centraliser mes liens sociaux, mes outils, et mes expériences
-- Tester en conditions réelles une architecture Rails API + Next.js
+- **Ruby on Rails 7** (API mode)
+- **PostgreSQL** (database)
+- **Rodauth** with JWT (authentication)
+- **Blueprinter** (JSON serialization)
+- Tested with RSpec, FactoryBot, and Shoulda Matchers
 
----
+##  Features
 
-## 🛠️ Stack technique
+- Account creation, login, logout, JWT token system
+- Admin and user roles
+- Endpoints for projects, skills, clients, news posts, and releases
+- Clean, modular API structure
+- Connected to a Next.js frontend
 
-- **Backend** : Ruby on Rails (API-only)
-- **Frontend** : Next.js + Tailwind CSS
-- **Auth** : Rodauth avec JWT (authentification sécurisée sans session)
-- **Serialisation** : Blueprinter
-- **Tests** : RSpec, FactoryBot (en cours)
-- **Déploiement** : VPS OVH (Linux Fedora)
+##  Goal
 
----
+This backend was built to support a modern developer portfolio site.  
+It reflects my ability to structure a scalable API, implement secure authentication, and manage real-world data models in production.
 
-## 🧩 Fonctionnalités principales
+##  Contact
 
-- 🔐 Création de compte, login, logout via JWT
-- 🧠 Gestion de mon profil et compétences (`/skills`)
-- 🗂️ Section projets (`/projects`) et clients (`/clients`)
-- 📰 Zone news & changelogs (`/news`, `/release`)
-- 🎮 Prévu : pages live, gaming, bibliothèques, favoris, outils...
+- [LinkedIn](https://www.linkedin.com/in/nexspro)  
+- [GitHub](https://github.com/nexspro)  
+- Email: nexspro@ik.me
